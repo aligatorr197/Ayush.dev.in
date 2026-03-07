@@ -1,1 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Developer Portfolio</title>
+    <style>
+        /* CSS Variables for easy theming */
+        :root {
+            --bg-color: #0f172a; /* Deep slate dark mode */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-color: #38bdf8; /* Tech blue */
+        }
+
+        /* Base Reset & Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            cursor: none; /* Hides default cursor for our custom one */
+            overflow-x: hidden;
+        }
+
+        /* Custom Cursor */
+        .cursor-dot, .cursor-outline {
+            position: fixed;
+            top: 0; left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+        .cursor-dot {
+            width: 8px; height: 8px;
+            background-color: var(--accent-color);
+        }
+        .cursor-outline {
+            width: 40px; height: 40px;
+            border: 2px solid rgba(56, 189, 248, 0.5);
+            transition: transform 0.2s ease-out, background-color 0.2s ease-out;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem 5%;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 5%;
+        }
+        .hero h2 {
+            color: var(--accent-color);
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        .hero p {
+            color: var(--text-muted);
+            max-width: 600px;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Typing Effect CSS */
+        .typing-text {
+            color: var(--accent-color);
+        }
+        .cursor-blink {
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* Buttons */
+        .btn {
+            padding: 0.8rem 2rem;
+            background: transparent;
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+            border-radius: 5px;
+            cursor: none; /* Keep none so custom cursor works over it */
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn:hover {
+            background: rgba(56, 189, 248, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 5rem 5%;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .project-card {
+            background: #1e293b;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid #334155;
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+        }
+        .project-card h3 {
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        .tech-stack {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Scroll Reveal Animation Classes */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .is-revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+
+    <nav>
+        <div class="logo">DevDesign.</div>
+        <div class="nav-links">
+            <a href="#about" class="hover-target">About</a>
+            <a href="#projects" class="hover-target">Work</a>
+            <a href="#contact" class="hover-target">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h2>HI, MY NAME IS</h2>
+        <h1>Alex Developer.</h1>
+        <h1>I am a <span class="typing-text"></span><span class="cursor-blink">|</span></h1>
+        <p>I build exceptional and accessible digital experiences. Currently focused on building responsive full-stack applications and intuitive user interfaces.</p>
+        <div>
+            <a href="#" class="btn hover-target">Download Resume</a>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <h2 class="section-title reveal-on-scroll">Some Things I've Built</h2>
+        
+        <div class="project-grid">
+            <div class="project-card reveal-on-scroll hover-target" style="transition-delay: 100ms;">
+                <h3>E-Commerce Platform</h3>
+                <p>A full-featured storefront with secure checkout, user authentication, and a custom admin dashboard for inventory management.</p>
+                <div class="tech-stack">
+                    <span>React</span>
+                    <span>Node.js</span>
+                    <span>MongoDB</span>
+                </div>
+            </div>
+
+            <div class="project-card reveal-on-scroll hover-target" style="transition-delay: 200ms;">
+                <h3>Social Media Dashboard</h3>
+                <p>A highly interactive analytics dashboard featuring real-time data visualization and secure API integrations.</p>
+                <div class="tech-stack">
+                    <span>Next.js</span>
+                    <span>TypeScript</span>
+                    <span>Tailwind CSS</span>
+                </div>
+            </div>
+
+            <div class="project-card reveal-on-scroll hover-target" style="transition-delay: 300ms;">
+                <h3>Creative Agency Site</h3>
+                <p>A visually stunning, animation-heavy marketing website designed to capture attention and convert leads.</p>
+                <div class="tech-stack">
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>Vanilla JS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        class PortfolioController {
+            constructor() {
+                document.addEventListener('DOMContentLoaded', () => {
+                    this.initCursor();
+                    this.initScrollReveal();
+                    this.initTypingEffect();
+                });
+            }
+
+            initCursor() {
+                const cursorDot = document.querySelector('[data-cursor-dot]');
+                const cursorOutline = document.querySelector('[data-cursor-outline]');
+                
+                if (!cursorDot || !cursorOutline) return;
+
+                window.addEventListener('mousemove', (e) => {
+                    const posX = e.clientX;
+                    const posY = e.clientY;
+
+                    cursorDot.style.transform = `translate(${posX}px, ${posY}px)`;
+                    
+                    cursorOutline.animate({
+                        transform: `translate(${posX}px, ${posY}px)`
+                    }, { duration: 500, fill: "forwards" });
+                });
+
+                const clickables = document.querySelectorAll('a, button, .hover-target');
+                clickables.forEach(link => {
+                    link.addEventListener('mouseenter', () => {
+                        cursorOutline.style.transform += ' scale(1.5)';
+                        cursorOutline.style.backgroundColor = 'rgba(56, 189, 248, 0.1)';
+                    });
+                    link.addEventListener('mouseleave', () => {
+                        cursorOutline.style.transform = cursorOutline.style.transform.replace(' scale(1.5)', '');
+                        cursorOutline.style.backgroundColor = 'transparent';
+                    });
+                });
+            }
+
+            initScrollReveal() {
+                const observerOptions = {
+                    root: null,
+                    threshold: 0.15,
+                    rootMargin: "0px"
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-revealed');
+                            observer.unobserve(entry.target); 
+                        }
+                    });
+                }, observerOptions);
+
+                const hiddenElements = document.querySelectorAll('.reveal-on-scroll');
+                hiddenElements.forEach(el => observer.observe(el));
+            }
+
+            initTypingEffect() {
+                const typingElement = document.querySelector('.typing-text');
+                if (!typingElement) return;
+
+                const words = ['MERN Stack Developer.', 'Creative UI Designer.', 'T3 Stack Enthusiast.'];
+                let wordIndex = 0;
+                let charIndex = 0;
+                let isDeleting = false;
+
+                const type = () => {
+                    const currentWord = words[wordIndex];
+                    const speed = isDeleting ? 40 : 100;
+
+                    if (isDeleting) {
+                        typingElement.textContent = currentWord.substring(0, charIndex - 1);
+                        charIndex--;
+                    } else {
+                        typingElement.textContent = currentWord.substring(0, charIndex + 1);
+                        charIndex++;
+                    }
+
+                    if (!isDeleting && charIndex === currentWord.length) {
+                        isDeleting = true;
+                        setTimeout(type, 2000); 
+                    } else if (isDeleting && charIndex === 0) {
+                        isDeleting = false;
+                        wordIndex = (wordIndex + 1) % words.length;
+                        setTimeout(type, 500); 
+                    } else {
+                        setTimeout(type, speed);
+                    }
+                };
+
+                type(); 
+            }
+        }
+
+        const myPortfolio = new PortfolioController();
+    </script>
+</body>
+</html>
 
