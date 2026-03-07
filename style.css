@@ -74,10 +74,6 @@ nav {
     color: var(--accent-color);
 }
 
-.nav-links {
-    display: flex; /* ADDED - This was missing! */
-}
-
 .nav-links a {
     color: var(--text-main);
     text-decoration: none;
@@ -141,7 +137,7 @@ nav {
     color: var(--accent-color);
     border: 2px solid var(--accent-color);
     border-radius: 5px;
-    cursor: pointer; /* CHANGED from 'none' - better UX */
+    cursor: none; /* Keep none so custom cursor works over it */
     font-size: 1rem;
     font-weight: bold;
     transition: all 0.3s ease;
@@ -238,13 +234,8 @@ nav {
         flex-direction: column;
         gap: 1.5rem;
     }
-    
-    .nav-links {
-        flex-direction: column; /* ADDED - Stack links vertically on mobile */
-    }
-    
     .nav-links a {
-        margin: 0.5rem 0; /* ADJUSTED - Better mobile spacing */
+        margin: 0 1rem;
     }
 
     /* Adjust Hero Text Size */
@@ -253,11 +244,6 @@ nav {
     }
     .hero p {
         font-size: 1rem;
-    }
-
-    /* Adjust section title for mobile */
-    .section-title {
-        font-size: 2rem; /* ADDED - Better scaling */
     }
 
     /* Reduce padding on mobile */
