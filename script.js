@@ -155,3 +155,15 @@ class PortfolioController {
 
 // Initialize the entire portfolio logic
 const myPortfolio = new PortfolioController();
+const fades=document.querySelectorAll(".fade");
+
+window.addEventListener("scroll",()=>{
+fades.forEach(f=>{
+let position=f.getBoundingClientRect().top;
+let screen=window.innerHeight;
+
+if(position<screen-100){
+f.classList.add("show");
+}
+});
+});
