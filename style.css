@@ -275,16 +275,3 @@ justify-content:space-between;
 padding:80px 10%;
 flex-wrap:wrap;
 }
-
-.hero-text{
-max-width:500px;
-}
-
-.hero-image img{
-width:280px;
-height:280px;
-object-fit:cover;
-border-radius:50%;
-border:5px solid #00bfff;
-box-shadow:0 15px 40px rgba(0,0,0,0.4);
-}
