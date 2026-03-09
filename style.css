@@ -268,10 +268,13 @@ border-radius:15px;
 padding:20px;
 transition:0.4s;
 }
-.hero-container{
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:80px 10%;
-flex-wrap:wrap;
+.about{
+    text-align:center;
+    padding:40px;
+}
+
+.about img{
+    width:180px;
+    border-radius:50%;
+    border:4px solid blue;
 }
